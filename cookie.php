@@ -1,4 +1,5 @@
 <?php
+$input = '';
 if(!isset($_COOKIE['visited_count']) ){
   $visited_count = 1;
 }else{
@@ -26,7 +27,7 @@ setcookie('visited_count', $visited_count);
     ?>
     <form action="cookie2.php" method="post">
     あなたの名前を入力してください。
-      <input type="text" name="username" value="<?= $input ?>" />
+      <input type="text" name="username" value="<?= htmlspecialchars($input, ENT_QUOTES, 'UTF-8') ?>" />
       <input type="submit" name="name_submit" value="送信" />
     </form>
 

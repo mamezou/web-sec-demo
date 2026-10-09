@@ -9,7 +9,7 @@ session_start();
 </head>
 <body>
 <?php
-print('セッションIDは '.$_COOKIE['PHPSESSID'].' です。');
+print('セッションIDは '.session_id().' です。');
 if(!isset($_SESSION['count'])){
   $_SESSION['count'] = 1;
 }else{
