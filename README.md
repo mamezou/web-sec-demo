@@ -50,5 +50,6 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/mamezou/web-sec-dem
 
 - ローカルの Docker (PHP 8.3.35 / Apache 2.4.68) で、4 本の PHP が HTTP 200 を返し、`visited_count` と `PHPSESSID` の Cookie が付くことを確認済みです
 - `cookie.php` の入力欄は、Cookie に `"><script>` を入れても `htmlspecialchars` で無害化されることを確認済みです
-- `setup.sh` は EC2 では未確認です。`dnf install docker` と `systemctl enable --now docker` は、初回の起動時に確認してください
+- `setup.sh` は、Amazon Linux 2023 の EC2 (t3.micro、東京リージョン) で 2026-10-09 に確認済みです。ユーザーデータに貼って起動すると、4 本の PHP が HTTP 200 を返します。再起動後もコンテナが自動で立ち上がります
+- 上の `curl` で `setup.sh` を取得して実行する手順は、EC2 では未確認です
 - Amazon Linux 2 は対象外です
