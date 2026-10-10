@@ -9,6 +9,9 @@ session_start();
 </head>
 <body>
 <?php
+if (isset($_SESSION['username'])) {
+  echo "こんにちは、" . htmlspecialchars($_SESSION['username'], ENT_QUOTES) . "さん<br />";
+}
 print('セッションIDは '.session_id().' です。');
 if(!isset($_SESSION['count'])){
   $_SESSION['count'] = 1;
@@ -23,5 +26,7 @@ echo "<p>アクセス回数： " . $_SESSION['count'] . "</p>";
       <input type="text" name="username" value="" />
       <input type="submit" name="name_submit" value="送信" />
     </form>
+    <p><a href="session-file.php">サーバ側のセッションファイルを見る</a></p>
+    <p><a href="index.html">トップページへ</a></p>
 </body>
 </html>

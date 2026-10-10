@@ -31,5 +31,6 @@ setcookie('visited_count', $visited_count);
       <input type="submit" name="name_submit" value="送信" />
     </form>
 
+    <p><a href="index.html">トップページへ</a></p>
   </body>
 </html>

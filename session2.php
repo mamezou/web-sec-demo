@@ -4,5 +4,7 @@ if (isset($_POST["username"])) {
 $_SESSION['username'] = $_POST["username"];
 print "sessionに保存しました。<br />";
 echo "<p>お名前： " . $_POST["username"] . "</p>";
+
+print "<br /><a href='session.php'>session.php</a>にアクセスしてください。";
 }
 ?>
