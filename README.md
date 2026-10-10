@@ -27,6 +27,14 @@ docker run --rm -p 8080:80 web-sec-demo
 1. 開発者ツール (F12) の「ストレージ」または「Application」で、Cookie を見る。`visited_count` が付いている
 2. `cookie.php` で名前を送信する。`username` の Cookie が付く。値を書き換えて再読み込みすると、画面の名前が変わる
 3. `session.php` を開く。画面のセッション ID と `PHPSESSID` の値が同じになる。Cookie に名前も回数もない
+4. `session2.php` の名前欄に `<script>document.body.append(document.cookie)</script>` を入力して送信する。画面に `PHPSESSID` の値が表示される。ページ内のスクリプトが Cookie を読めたことを示す
+
+## 直してみる
+
+次のどちらかを試し、`docker build -t web-sec-demo .` で作り直して、手順 4 をもう一度行います。
+
+- `session.php` と `session2.php` の `session_start();` の前に `ini_set('session.cookie_httponly', '1');` を入れる。`Set-Cookie` に `HttpOnly` が付き、画面に Cookie の値が出なくなる。`HttpOnly` は Cookie の読み取りを防ぐ。スクリプトが動くこと自体は防げない
+- `session2.php` の `$_POST["username"]` の出力を `htmlspecialchars($_POST["username"], ENT_QUOTES)` に変える。入力したスクリプトが文字として表示され、動かなくなる
 
 ## 実行例
 
